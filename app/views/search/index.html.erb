@@ -1,0 +1,22 @@
+<h1>Search result for <%=@option%> : <%=@search%></h1>
+<table>
+  <tbody>
+    <% @product.each do |product| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even')%>">
+        <td>
+          <%= image_tag(product.image, class: 'list_image') if File.exists?("app/assets/images/#{product.image}")%>
+        </td>
+        <td class="list_description">
+          <dl>
+            <dt><%= product.name %></dt>
+            <dd>
+              <%= product.description %>
+              <br><br>
+              <%= product.price %>
+            </dd>
+          </dl>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
